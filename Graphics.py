@@ -25,7 +25,7 @@ pointsfour = None
 print(pointsone)
 # In[ ]:
 
-def initialize(startermap):
+def initialize():
     global screen
     global pointsone
     global pointstwo
@@ -33,13 +33,13 @@ def initialize(startermap):
     global pointsfour
     # initialize Pygame
     pygame.init()
-    (width, height) = (1280, 720)
-    pointsone = ((width*.20, height*.20), (width*.80, height*.20), (width*.2, height*.8),(width*.8, height*.8))
-    pointstwo = ((width*.4, height*.40), (width*.60, height*.40), (width*.4, height*.6),(width*.6, height*.6))
-    pointsthree = ((width*.45, height*.45), (width*.55, height*.45), (width*.45, height*.55),(width*.55, height*.55))
-    pointsfour = ((width*.455, height*.455), (width*.525, height*.455), (width*.455, height*.525),(width*.525, height*.525))
+    (screenWidth, screenHeight) = (1280, 720)
+    pointsone = ((screenWidth*.20, screenHeight*.20), (screenWidth*.80, screenHeight*.20), (screenWidth*.2, screenHeight*.8),(screenWidth*.8, screenHeight*.8))
+    pointstwo = ((screenWidth*.4, screenHeight*.40), (screenWidth*.60, screenHeight*.40), (screenWidth*.4, screenHeight*.6),(screenWidth*.6, screenHeight*.6))
+    pointsthree = ((screenWidth*.45, screenHeight*.45), (screenWidth*.55, screenHeight*.45), (screenWidth*.45, screenHeight*.55),(screenWidth*.55, screenHeight*.55))
+    pointsfour = ((screenWidth*.455, screenHeight*.455), (screenWidth*.525, screenHeight*.455), (screenWidth*.455, screenHeight*.525),(screenWidth*.525, screenHeight*.525))
 
-    screen = pygame.display.set_mode(size=(width, height))
+    screen = pygame.display.set_mode(size=(screenWidth, screenHeight))
     screen.fill("purple")
     pygame.display.flip()
 
@@ -49,7 +49,7 @@ def initialize(startermap):
 
 ## Draw cell for currently occupied space
 def __drawZero():
-    pygame.draw.line(screen, "black", (0, 0), Graphics.pointsone[0])
+    pygame.draw.line(screen, "black", (0, 0), pointsone[0])
     pygame.draw.line(screen, "black", (0, height), pointsone[2])
     pygame.draw.line(screen, "black", (width, 0), pointsone[1])
     pygame.draw.line(screen, "black", (width, height), pointsone[3])

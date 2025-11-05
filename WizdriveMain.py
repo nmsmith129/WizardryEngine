@@ -54,8 +54,8 @@ TEXTMAP = ((1,1,1), (0,1,0), (1,1,1))
 
 def main():
     global currentmap
+    Graphics.initialize()
     currentmap = loadMap("MovementTestLevel.lvlmap")
-    initialize(currentmap)
     playerfacing = 1
     gameLoop()
     print("All good")
@@ -97,7 +97,6 @@ def loadMap(mapfile):
                 map[l][c] = int(map[l][c])
     except Exception:
         sys.exit(1)
-    Graphics.drawView(map)
     return map
 
 # In[ ]:
