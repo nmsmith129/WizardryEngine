@@ -1,3 +1,1 @@
 pygame
-nbformat
-import_ipynb
