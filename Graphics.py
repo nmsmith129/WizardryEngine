@@ -24,7 +24,7 @@ pointsthree = None
 pointsfour = None
 screenHeight = 0
 screenWidth = 0
-print(pointsone)
+
 # In[ ]:
 
 def initialize():
