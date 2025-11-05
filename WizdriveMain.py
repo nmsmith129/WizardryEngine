@@ -30,7 +30,7 @@ ROOM    = 0b1
 VISITED = 0b10
 PLAYER  = 0b100
 ENEMY   = 0b1000
-ITEM    = 0b10000
+ROOMKEY = 0b10000
 
 ## Global variables
 
@@ -54,12 +54,23 @@ TEXTMAP = ((1,1,1), (0,1,0), (1,1,1))
 
 def main():
     global currentmap
+    global playerfacing
+
+    # Initialize the pygame window
     Graphics.initialize()
+    
+    # Load up the first map
     currentmap = loadMap("MovementTestLevel.lvlmap")
+
+    # Ensure player is pointing North
     playerfacing = 1
+
+    # Draw a first-person view of the initial map state
     Graphics.drawView(currentmap)
+
+    # Begin the event-capture game loop
     gameLoop()
-    print("All good")
+    # print("All good")
     return
 
 
@@ -107,9 +118,8 @@ def loadMap(mapfile):
 
 def gameLoop():
     while True:
+        # Poll continuously for keyboard input
         Graphics.getEvents()
-    # Draw the player view
-    # Poll continuously for keyboard keys
     # When one is found, parse it and perform the action
     # Enemies take turns
     # Repeat
