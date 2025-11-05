@@ -22,6 +22,8 @@ pointsone = "TEST"
 pointstwo = None
 pointsthree = None
 pointsfour = None
+screenHeight = 0
+screenWidth = 0
 print(pointsone)
 # In[ ]:
 
@@ -31,9 +33,11 @@ def initialize():
     global pointstwo
     global pointsthree
     global pointsfour
+    global screenWidth
+    global screenHeight
     # initialize Pygame
     pygame.init()
-    (screenWidth, screenHeight) = (1280, 720)
+    (screenWidth, screenHeight) = (800, 800)
     pointsone = ((screenWidth*.20, screenHeight*.20), (screenWidth*.80, screenHeight*.20), (screenWidth*.2, screenHeight*.8),(screenWidth*.8, screenHeight*.8))
     pointstwo = ((screenWidth*.4, screenHeight*.40), (screenWidth*.60, screenHeight*.40), (screenWidth*.4, screenHeight*.6),(screenWidth*.6, screenHeight*.6))
     pointsthree = ((screenWidth*.45, screenHeight*.45), (screenWidth*.55, screenHeight*.45), (screenWidth*.45, screenHeight*.55),(screenWidth*.55, screenHeight*.55))
@@ -50,9 +54,9 @@ def initialize():
 ## Draw cell for currently occupied space
 def __drawZero():
     pygame.draw.line(screen, "black", (0, 0), pointsone[0])
-    pygame.draw.line(screen, "black", (0, height), pointsone[2])
-    pygame.draw.line(screen, "black", (width, 0), pointsone[1])
-    pygame.draw.line(screen, "black", (width, height), pointsone[3])
+    pygame.draw.line(screen, "black", (0, screenHeight), pointsone[2])
+    pygame.draw.line(screen, "black", (screenWidth, 0), pointsone[1])
+    pygame.draw.line(screen, "black", (screenWidth, screenHeight), pointsone[3])
     pygame.draw.line(screen, "black", pointsone[0], pointsone[1])
     pygame.draw.line(screen, "black", pointsone[0], pointsone[2])
     pygame.draw.line(screen, "black", pointsone[1], pointsone[3])
@@ -67,8 +71,8 @@ def __drawZeroLeft():
 
 ## Draw cell to right of player
 def __drawZeroRight():
-    pygame.draw.line(screen, "black", pointsone[1], (width, pointsone[1][1]))
-    pygame.draw.line(screen, "black", pointsone[3], (width, pointsone[3][1]))
+    pygame.draw.line(screen, "black", pointsone[1], (screenWidth, pointsone[1][1]))
+    pygame.draw.line(screen, "black", pointsone[3], (screenWidth, pointsone[3][1]))
     return
 
 ## Draw cell one space ahead of player
@@ -129,9 +133,9 @@ def __drawTwoRight():
 def drawView(localmap):
     __drawZero()
     if localmap[2][0]:
-        __drawLeft()
+        __drawZeroLeft()
     if localmap[2][2]:
-        __drawRight()
+        __drawZeroRight()
     if localmap[1][1]:
         __drawOne()
         if localmap[1][0]:

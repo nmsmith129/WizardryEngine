@@ -34,8 +34,8 @@ ITEM    = 0b10000
 
 ## Global variables
 
-mapWidth = 0
-mapHeight = 0
+width = 0
+height = 0
 currentmap = None                                   # Current level map
 savefile = None                                     # Current loaded save file
 playerfacing = 0                                    # Direction player is facing (1 for North, 2 for East, 3 for South, 4 for West)
@@ -57,6 +57,7 @@ def main():
     Graphics.initialize()
     currentmap = loadMap("MovementTestLevel.lvlmap")
     playerfacing = 1
+    Graphics.drawView(currentmap)
     gameLoop()
     print("All good")
     return
