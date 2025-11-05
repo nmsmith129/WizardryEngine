@@ -97,8 +97,8 @@ def loadMap(mapfile):
                 map[l][c] = int(map[l][c])
     except Exception:
         sys.exit(1)
-    print(map)
-
+    Graphics.drawView(map)
+    return map
 
 # In[ ]:
 
@@ -113,15 +113,6 @@ def gameLoop():
     # When one is found, parse it and perform the action
     # Enemies take turns
     # Repeat
-    return
-
-
-# In[ ]:
-
-
-## Draw the segmented false-3d first-person player view
-
-def draw_view():
     return
 
 
